@@ -7,7 +7,7 @@ class Feedback(models.Model):
     feedback_id = models.AutoField(primary_key=True)
     trader = models.ForeignKey(Trader, on_delete = models.CASCADE)
     recycler = models.ForeignKey(Recycler, on_delete = models.CASCADE, null=True, blank= True)
-    feedback_at = models.DateTimeField(auto_now_add = True)
+    created_at = models.DateTimeField(auto_now_add = True)
     feedback = models.TextField(max_length = 500)
 
     def __str__(self):
