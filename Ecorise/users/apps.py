@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class MaterialPricingConfig(AppConfig):
+class TraderConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'material_pricing'
+    name = 'users'
