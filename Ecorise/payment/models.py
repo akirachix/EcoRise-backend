@@ -1,5 +1,4 @@
 from django.db import models
-from django.db import models
 from trader.models import Trader
 from material_pricing.models import Material
 from recycler.models import Recycler
