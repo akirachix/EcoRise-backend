@@ -37,9 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< feature/traders
     'trader',
     'material_pricing',
+=======
+
+    'payment',
+    'reward',
+    
+
+>>>>>>> develop
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
