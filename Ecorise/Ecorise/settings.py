@@ -37,8 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< feature/recycler
     'recycler',
     'product',
+=======
+
+    'payment',
+    'reward'
+>>>>>>> feature/app
     'pickup',
 
 ]
