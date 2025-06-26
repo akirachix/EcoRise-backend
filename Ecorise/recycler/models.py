@@ -6,7 +6,7 @@ class Recycler(models.Model):
        max_length=10,
        primary_key=True,
        unique=True,
-       help_text="Primary key, unique ID for each user"
+       help_text="Primary key,AutoField"
    )
    name = models.CharField(
        max_length=100,
