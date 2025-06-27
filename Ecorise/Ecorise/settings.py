@@ -41,12 +41,6 @@ INSTALLED_APPS = [
     'users',
     
 
-
-    'payment',
-    'reward',
-    
-
-
 ]
 
 
