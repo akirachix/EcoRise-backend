@@ -1,7 +1,10 @@
 from django.contrib import admin
+from .models import User
 
-from .models import Trader
-admin.site.register(Trader)
-from.models import Recycler
-admin.site.register(Recycler)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'phone', 'user_type', 'created_at')
+    search_fields = ('name', 'email', 'phone')
+    list_filter = ('user_type',)
+admin.site.register(User, UserAdmin)
+
 
