@@ -12,13 +12,7 @@ class User(models.Model):
     def __str__(self):
         return f"{self.user_id} - {self.name}"
     
-    class Meta:
-        constraints = [
-            models.CheckConstraint(
-                check=models.Q(email__isnull=False) | models.Q(phone__isnull=False),
-                name='email_or_phone_check'
-            ),]
-    
+   
 
 
 
