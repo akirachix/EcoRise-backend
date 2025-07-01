@@ -1,5 +1,5 @@
 from django.db import models
-from material_pricing.models import Material
+from product.models import Material
 from users.models import User
 from decimal import Decimal
 class Payment(models.Model):
