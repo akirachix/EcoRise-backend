@@ -9,5 +9,7 @@ class Feedback(models.Model):
     created_at = models.DateTimeField(auto_now_add = True)
     feedback = models.TextField(max_length = 500)
 
+    
+
     def __str__(self):
         return f'Feedback {self.feedback_id}'
