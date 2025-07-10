@@ -44,10 +44,17 @@ INSTALLED_APPS = [
     'feedback',
 
 
+    'users',
+
+    'product',
+    'material',
+
+
+
+    'feedback',
     'payment',
     'reward',
     
-
 
 ]
 
