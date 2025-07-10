@@ -1,7 +1,7 @@
 from django.db import models
 from users.model import User
 
-# Create your models here.
+
 class Feedback(models.Model):
     feedback_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete = models.CASCADE)
