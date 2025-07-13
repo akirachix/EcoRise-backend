@@ -8,8 +8,11 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('feedback', '0002_rename_feedback_at_feedback_created_at'),
-        ('users', '0002_alter_user_user_type'),
+        ('users', '0001_initial'),
     ]
+    
+
+
 
     operations = [
         migrations.AddField(
