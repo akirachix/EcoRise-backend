@@ -50,7 +50,7 @@ INSTALLED_APPS = [
 
     'feedback',
     'payment',
-    'pickup_api',
+    'api',
     'rest_framework',
     
     
