@@ -1,13 +1,11 @@
 from django.db import models
-from trader.models import Trader
-from material_pricing.models import Material
-from recycler.models import Recycler
+from product.models import Material
+from users.models import User
 from decimal import Decimal
 class Payment(models.Model):
     payment_id = models.AutoField(primary_key=True, unique=True)
     material = models.ForeignKey(Material, on_delete=models.CASCADE)
-    recycler = models.ForeignKey(Recycler, on_delete=models.CASCADE)
-    trader = models.ForeignKey(Trader, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     points_award = models.CharField(max_length=10)
     payment_method = models.CharField(max_length=30, default='M-Pesa')

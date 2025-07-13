@@ -1,4 +1,5 @@
 from django.shortcuts import render
+
 from rest_framework import viewsets
 from .serializers import MaterialSerializer, ProductSerializer
 from material.models import Material
@@ -8,5 +9,6 @@ class MaterialViewSet(viewsets.ModelViewSet):
     serializer_class= MaterialSerializer
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
-    serializer_class = ProductSerializer
+    serializer_class = ProductSerialize
+
 # Create your views here.
