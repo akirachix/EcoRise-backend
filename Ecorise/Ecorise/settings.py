@@ -37,7 +37,26 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+
+
+    'pickup',
+    
+
+    'users',
+
+
+    'product',
+    'material',
+
+
+    'feedback',
+    'payment',
+    'reward',
+    
+
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
