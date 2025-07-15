@@ -1,6 +1,16 @@
 from django.shortcuts import render
 
 from rest_framework import viewsets
+from .serializers import PickupSerializer
+from pickup.models import Pickup
+
+
+class PickupViewSet(viewsets.ModelViewSet):
+    queryset=Pickup.objects.all()
+    serializer_class=PickupSerializer
+
+
+from rest_framework import viewsets
 
 from .serializers import MaterialSerializer, ProductSerializer
 from material.models import Material
@@ -95,5 +105,4 @@ from .serializers import UserSerializer
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-
 

@@ -1,5 +1,6 @@
 from django.db import models
 
+
 from decimal import Decimal
 from django.utils import timezone
 
@@ -41,6 +42,7 @@ class Payment(models.Model):
     
     def __str__(self):
         return f"{self.payment_id} | {self.phone_number} | {self.amount} {self.payment_status}"
+
 
 
 
