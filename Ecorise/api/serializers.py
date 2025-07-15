@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+
 from material.models import Material
 class MaterialSerializer(serializers.ModelSerializer):
     class Meta:
@@ -10,6 +11,14 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model= Product
         fields='__all__'
+
+from users.models import User
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'
+
 
 from payment.models import Payment
 from reward.models import Reward

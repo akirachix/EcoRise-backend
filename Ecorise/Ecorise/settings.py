@@ -60,6 +60,8 @@ INSTALLED_APPS = [
     'feedback',
     'payment',
     'reward',
+    'rest_framework',
+    'api',
     
 
 ]
