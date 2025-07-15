@@ -1,11 +1,11 @@
 from django.db import models
-from product.models import Material
-from users.models import User
+# from material.models import Material
+# from users.models import User
 from decimal import Decimal
 class Payment(models.Model):
     payment_id = models.AutoField(primary_key=True, unique=True)
-    material = models.ForeignKey(Material, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # material_id = models.ForeignKey(Material, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     points_award = models.CharField(max_length=10)
     payment_method = models.CharField(max_length=30, default='M-Pesa')
