@@ -38,8 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-
-
     'pickup',
     
 
@@ -48,10 +46,21 @@ INSTALLED_APPS = [
 
     'product',
     'material',
+    'rest_framework',
+    'api',
+
+
+
+    
+
 
 
     'feedback',
     'payment',
+    'api',
+    'rest_framework',
+    
+
     'reward',
     'rest_framework',
     'api',
