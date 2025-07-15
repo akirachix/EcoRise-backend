@@ -1,4 +1,5 @@
 from django.shortcuts import render
+
 from rest_framework import viewsets
 
 
@@ -26,7 +27,7 @@ from rest_framework import status
 from .serializers import B2CPaymentSerializer
 from .daraja import DarajaAPI
 
-# Configure logger
+
 logger = logging.getLogger(__name__)
 
 @api_view(['POST'])
@@ -70,3 +71,7 @@ def b2c_result(request):
 def b2c_timeout(request):
     logger.debug(f"B2C timeout callback: {request.data}")
     return Response({'status': 'ok'}, status=status.HTTP_200_OK)
+
+
+# Create your views here.
+
