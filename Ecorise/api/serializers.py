@@ -1,4 +1,11 @@
 from rest_framework import serializers
+from users.models import User
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'
+
 from payment.models import Payment
 from reward.models import Reward
 
@@ -27,4 +34,5 @@ class B2CPaymentSerializer(serializers.Serializer):
         if value <= 0:
             raise serializers.ValidationError("Amount must be greater than 0")
         return value
+
 
