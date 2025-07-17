@@ -1,7 +1,12 @@
 from rest_framework import serializers
-
+from material.models import Material
 from pickup.models import Pickup ,Material, User
 from pickup.utils import get_coordinates 
+from product.models import Product
+from users.models import User
+from payment.models import Payment
+from reward.models import Reward
+
 class PickupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pickup
@@ -31,18 +36,17 @@ class PickupSerializer(serializers.ModelSerializer):
 
 
 
-from material.models import Material
+
 class MaterialSerializer(serializers.ModelSerializer):
     class Meta:
         model= Material
         fields='__all__'
-from product.models import Product
+
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model= Product
         fields='__all__'
 
-from users.models import User
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -50,8 +54,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-from payment.models import Payment
-from reward.models import Reward
+
 
 class PaymentSerializer(serializers.ModelSerializer):
     class Meta:
