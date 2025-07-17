@@ -1,12 +1,5 @@
 from django.apps import AppConfig
 
-
-
-class ApiConfig(AppConfig):
-
-
-class PaymentapiConfig(AppConfig):
-
 class ApiConfig(AppConfig):
 
 

@@ -20,7 +20,7 @@ class MaterialViewSet(viewsets.ModelViewSet):
     serializer_class= MaterialSerializer
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
-    serializer_class = ProductSerialize
+    serializer_class = ProductSerializer
 
 
 

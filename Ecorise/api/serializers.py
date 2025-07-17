@@ -8,6 +8,10 @@ class PickupSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def create(self, validated_data):
+        user = self.context['request'].user
+        if not user.is_staff:
+            validated_data.pop('pickup_status', None)
+       
         location = validated_data.get('market_location')
         lat, lon = get_coordinates(location)
         validated_data['market_latitude'] = lat
@@ -15,6 +19,10 @@ class PickupSerializer(serializers.ModelSerializer):
         return super().create(validated_data)
 
     def update(self, instance, validated_data):
+       
+        user = self.context['request'].user
+        if not user.is_staff:
+            validated_data.pop('pickup_status', None)        
         location = validated_data.get('market_location', instance.market_location)
         lat, lon = get_coordinates(location)
         validated_data['market_latitude'] = lat

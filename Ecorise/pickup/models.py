@@ -11,7 +11,11 @@ class Pickup(models.Model):
     market_location = models.CharField(max_length=100, default=1)
     market_latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
     market_longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
-    pickup_status = models.CharField(max_length=50, choices=[("Pending", "Pending"), ("Confirmed", "Confirmed")])
-    pickup_at = models.DateTimeField(null=True, blank=True)
+    pickup_status = models.CharField(
+    max_length=50,
+    choices=[("Pending", "Pending"), ("Confirmed", "Confirmed")],
+    default="Pending"  
+)
+
 
     

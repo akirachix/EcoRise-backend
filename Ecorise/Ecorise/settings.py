@@ -46,7 +46,7 @@ INSTALLED_APPS = [
 
     'product',
     'material',
-    'rest_framework',
+   
     'api',
 
 
@@ -57,13 +57,13 @@ INSTALLED_APPS = [
 
     'feedback',
     'payment',
-    'api',
+   
     'rest_framework',
     
 
     'reward',
-    'rest_framework',
-    'api',
+   
+  
 
     
 
