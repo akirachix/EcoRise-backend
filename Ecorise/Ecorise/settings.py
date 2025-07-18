@@ -151,3 +151,29 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DARAJA_CONSUMER_KEY = 'YhLSHyufTdMqlIGGe2zUp7GzeYR59e54C4R76coccI83zxZd'
+DARAJA_CONSUMER_SECRET = 'lYno0p1k7dFNsfJJfAlR2ILbFQtAH7XkWpdpV67qdlU4FNuzpUxyxuL9KKasXPYr'
+DARAJA_INITIATOR_NAME = 'testapi'
+DARAJA_SHORTCODE = '600986'
+DARAJA_SECURITY_CREDENTIAL = 'KKx0nj7ydMetiHSIdUEqlN0sAv1LxBBArMtjaHVZXIvmUK5jm75YhAUVNtEH0opLQY172qVK+an9O+CInMtAETR/I8zoLwyVcmXyXK65EHw7KBgOXSrv38lMVMouovr78Soli+3Tsz0INwFMl+RPVDoe2a/tFye3c7Gqa3sNVRC7ZhDH9L0nbRMWrAxquy169uAcNN5yEK/8qRQO3VzWwNA9QYAXinxNIibpJrQoD0uGLS+CIWuzLPSU4Xwk/YlyqJus9WLufZTt2zVl8vzaLexFLCun8EtBIbDNtTFu0wOV18bS9Q99rbNrd9iAfHStOHA9Ltve85hC2wicIB+1Sg=='
+DARAJA_B2C_RESULT_URL = 'https://1234abcd.ngrok.io/api/payments/daraja-callback/'
+DARAJA_B2C_QUEUE_TIMEOUT_URL = 'https://1234abcd.ngrok.io/api/payments/daraja-callback/'
+LOGGING = {
+   'version': 1,
+   'disable_existing_loggers': False,
+   'handlers': {
+       'console': {
+           'class': 'logging.StreamHandler',
+       },
+   },
+   'loggers': {
+       '': {
+           'handlers': ['console'],
+           'level': 'DEBUG',
+           'propagate': True,
+       },
+   },
+}
