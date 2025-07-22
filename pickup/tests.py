@@ -16,20 +16,20 @@ class PickupAPITestCase(APITestCase):
             price_per_kg=10.50
         )
         self.user = User.objects.create(
-            name="Test User",
-            email="testuser@example.com",
-            phone_number="1234567890",
+            name="Faith ",
+            email="faith@gmail.com",
+            phone_number="072345432",
             user_type="Trader",
-            password="testpassword123"
+            password="ertyhgr5"
         )
         self.pickup = Pickup.objects.create(
             material=self.material,
             user_id=self.user,
-            market_location="Test Market",
+            market_location="Gikomba",
             market_latitude=1.234567,
             market_longitude=2.345678,
             pickup_status="Pending",
-            pickup_at=None,
+            
         )
         self.list_url = reverse('pickup-list')
 
@@ -48,7 +48,7 @@ class PickupAPITestCase(APITestCase):
             "market_latitude": 3.456789,
             "market_longitude": 4.567890,
             "pickup_status": "Confirmed",
-            "pickup_at": make_aware(datetime(2025, 7, 14, 10, 0, 0)).isoformat(),
+            
         }
         response = self.client.post(self.list_url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -62,22 +62,25 @@ class PickupAPITestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, serializer.data)
 
-    def test_update_pickup(self):
-        url = reverse('pickup-detail', args=[self.pickup.request_id])
-        data = {
-            "material": self.material.material_id,
-            "user_id": self.user.user_id,
-            "market_location": "Updated Market",
-            "market_latitude": 1.234567,
-            "market_longitude": 2.345678,
-            "pickup_status": "Confirmed",
-            "pickup_at": make_aware(datetime(2025, 7, 15, 12, 0, 0)).isoformat(),
-        }
-        response = self.client.put(url, data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.pickup.refresh_from_db()
-        self.assertEqual(self.pickup.market_location, "Updated Market")
-        self.assertEqual(self.pickup.pickup_status, "Confirmed")
+def test_update_pickup(self):
+    url = reverse('pickup-detail', args=[self.pickup.request_id])
+    data = {
+        "material": self.material.material_id,
+        "user": self.user.user_id,
+        "market_location": "Updated Market",
+        "market_latitude": 1.234567,
+        "market_longitude": 2.345678,
+        "pickup_status": "Confirmed",
+    }
+    response = self.client.put(url, data, format='json')
+    print("Update response status:", response.status_code)
+    print("Update response data:", response.data)
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    self.pickup.refresh_from_db()
+    self.assertEqual(self.pickup.market_location, "Updated Market")
+    self.assertEqual(self.pickup.pickup_status, "Confirmed")
+    
 
     def test_delete_pickup(self):
         url = reverse('pickup-detail', args=[self.pickup.request_id])

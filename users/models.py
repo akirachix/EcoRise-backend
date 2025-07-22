@@ -1,4 +1,7 @@
 from django.db import models
+from django.db import models
+from django.contrib.auth.models import User
+
 
 USER_TYPE_CHOICES = [('Trader','trader'),('recycler','Recycler')]
 
