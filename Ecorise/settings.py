@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'reward',
     'rest_framework.authtoken',
+    'corsheaders',
    
 
 ]
