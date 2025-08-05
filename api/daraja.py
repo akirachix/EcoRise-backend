@@ -38,3 +38,4 @@ class DarajaAPI:
        }
        url = f"{self.base_url}/mpesa/stkpush/v1/processrequest"
        response = requests.post(url, headers=headers, json=payload)
+       return response.json()

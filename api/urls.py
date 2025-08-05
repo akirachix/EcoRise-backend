@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from rest_framework.routers import DefaultRouter
 from feedback.views import FeedbackViewSet
 from rest_framework.authtoken.views import obtain_auth_token
-from .views import PickupViewSet, UserViewSet, MaterialViewSet, ProductViewSet, STKPushView, daraja_callback, PaymentViewSet, RewardViewSet
+from .views import PickupViewSet, UserViewSet, MaterialViewSet, ProductViewSet, STKPushView, daraja_callback, PaymentViewSet, RewardViewSet, LoginView
 
 router = DefaultRouter()
 router.register(r'pickups', PickupViewSet, basename='pickup')
@@ -18,7 +18,7 @@ urlpatterns = [
    path('', include(router.urls)),
    path('daraja/stk-push/', STKPushView.as_view(), name='daraja-stk-push'),
    path('daraja/callback/', daraja_callback, name='daraja-callback'),
-   path('login/', obtain_auth_token), 
-   
+   path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
+   path('login/', LoginView.as_view(), name='login'),   
     
 ]

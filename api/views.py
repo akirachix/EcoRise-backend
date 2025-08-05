@@ -5,7 +5,7 @@ from .serializers import UserSerializer
 from .serializers import PickupSerializer
 from pickup.models import Pickup
 from rest_framework import viewsets
-from users.models import User
+from users.models import Profile
 from .serializers import UserSerializer
 import logging
 from rest_framework.views import APIView
@@ -25,6 +25,11 @@ from rest_framework import status
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from rest_framework import permissions
+from django.contrib.auth import authenticate
+from rest_framework.authtoken.models import Token
 
 
 
@@ -74,6 +79,47 @@ logger = logging.getLogger(__name__)
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
+    queryset = Profile.objects.all()
     serializer_class = UserSerializer
+    permission_classes = [permissions.AllowAny]
 
+    @action(detail=False, methods=['post'], url_path='register')
+    def register(self, request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+class LoginView(APIView):
+    permission_classes = [permissions.AllowAny]
+    def post(self, request):
+        identifier = request.data.get('identifier')  
+        password = request.data.get('password')
+        if not identifier or not password:
+            return Response({'error': 'Must include identifier and password'}, status=status.HTTP_400_BAD_REQUEST)
+
+        
+        try:
+            profile = Profile.objects.get(email=identifier)
+        except Profile.DoesNotExist:
+            try:
+                profile = Profile.objects.get(phone_number=identifier)
+            except Profile.DoesNotExist:
+                return Response({'error': 'Invalid login credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+
+        user = profile.user
+
+       
+        if not user.check_password(password):
+            return Response({'error': 'Invalid login credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+
+       
+        token, created = Token.objects.get_or_create(user=user)
+
+        return Response({
+            'token': token.key,
+            'user_id': user.id,
+            'email': user.email,
+            'name': profile.name,
+            'phone_number': profile.phone_number,
+        })
+    

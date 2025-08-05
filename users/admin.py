@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import User
+from .models import Profile
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'phone_number', 'user_type', 'created_at')
@@ -9,5 +9,5 @@ class UserAdmin(admin.ModelAdmin):
 
 
 
-admin.site.register(User, UserAdmin)
+admin.site.register(Profile, UserAdmin)
 

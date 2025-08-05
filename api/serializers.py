@@ -1,13 +1,13 @@
 from rest_framework import serializers
 from material.models import Material
-from pickup.models import Pickup ,Material, User
+from pickup.models import Pickup ,Material
 from pickup.utils import get_coordinates 
 from product.models import Product
 from users.models import User
 from payment.models import Payment
 from reward.models import Reward
 from rest_framework import serializers
-from users.models  import User
+from users.models  import Profile
 
 class PickupSerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,7 +28,7 @@ class PickupSerializer(serializers.ModelSerializer):
        
         user = self.context['request'].user
         if not user.is_staff:
-            validated_data.pop('pickup_status', None)        
+         validated_data.pop('pickup_status', None)        
         location = validated_data.get('market_location', instance.market_location)
         lat, lon = get_coordinates(location)
         validated_data['market_latitude'] = lat
@@ -50,22 +50,22 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
     class Meta:
-        model = User
-        fields = '__all__'
+        model = Profile
+        fields = ['name', 'email', 'phone_number', 'user_type', 'password']  # no 'user' or 'username'
 
-class UsersSerializer(serializers.ModelSerializer):
-    User = UserSerializer()
+    def create(self, validated_data):
+        password = validated_data.pop('password')
+        email = validated_data.get('email')
+        user = User.objects.create_user(
+            username=email,
+            email=email,
+            password=password
+        )
 
-    class Meta:
-        model = User
-        fields = "__all__"
-
-    def create(self, validate_data):
-        user_data = validated_data.pop('user')
-        user = User.objects.create(**user_data)
-        return User.objects.create(user = user, **validated_data)
-
+        profile = Profile.objects.create(user=user, **validated_data)
+        return profile
 
 
 
