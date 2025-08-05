@@ -25,6 +25,25 @@ from rest_framework import status
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect
+from django.contrib import messages
+
+from rest_framework import generics
+from .serializers import UserRegistrationSerializer
+from users.models import User
+from rest_framework.permissions import AllowAny
+from rest_framework_simplejwt.views import TokenObtainPairView
+from .serializers import MyTokenObtainPairSerializer
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
+class UserRegistrationView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserRegistrationSerializer
+    permission_classes = [AllowAny]
+    
+
 
 
 
@@ -77,3 +96,23 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+
+def login_view(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')  
+        else:
+            messages.error(request, 'Invalid email or password.')
+    return render(request, 'login.html')
+
+    def post(self,request):
+        name = request.data.get('name')
+        password = request.data.get('password')
+
+        user = authenticate(name = name,password = password)
+        if user:
+            token,created = Token.objects.get_or_create(user=user)

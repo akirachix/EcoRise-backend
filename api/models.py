@@ -30,7 +30,7 @@ class Payment(models.Model):
         choices=PAYMENT_STATUS_CHOICES,
         default='Pending'
     )
-    phone_number = models.CharField(max_length=15)  # Changed to CharField
+    phone_number = models.CharField(max_length=15)  
     mpesa_receipt_number = models.CharField(max_length=100, blank=True, null=True)
     paid_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
@@ -44,8 +44,3 @@ class Payment(models.Model):
         return f"{self.payment_id} | {self.phone_number} | {self.amount} {self.payment_status}"
 
 
-
-
-
-
-# Create your models here.

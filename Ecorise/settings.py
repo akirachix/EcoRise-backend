@@ -34,6 +34,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+AUTH_USER_MODEL = 'users.User'
 
 
 # Application definition
@@ -182,3 +183,8 @@ DARAJA_CONSUMER_SECRET = os.getenv('DARAJA_CONSUMER_SECRET')
 DARAJA_SHORTCODE = os.getenv('DARAJA_SHORTCODE')
 DARAJA_PASSKEY = os.getenv('DARAJA_PASSKEY')
 DARAJA_CALLBACK_URL = os.getenv('DARAJA_CALLBACK_URL')
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
